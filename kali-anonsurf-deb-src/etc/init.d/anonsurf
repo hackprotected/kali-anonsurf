@@ -69,45 +69,6 @@ function init {
 }
 
 
-function starti2p {
-	echo -e -n " $GREEN*$BLUE starting I2P services$RESETCOLOR\n"
-	service tor stop
-
-	# Modify DNS settings
-	if [ "$resolvconf_support" = false ] 
-	then
-		cp /etc/resolv.conf /etc/resolv.conf.bak;
-		touch /etc/resolv.conf;
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' > /etc/resolv.conf;
-		echo -e " $GREEN*$BLUE Modified resolv.conf to use localhost and Private Internet Access DNS$RESETCOLOR\n";
-	else
-		cp /etc/resolvconf/resolv.conf.d/head{,.bak};
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' >> /etc/resolvconf/resolv.conf.d/head;
-		echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and Private Internet Access DNS$RESETCOLOR\n";
-		resolvconf -u;
-	fi
-	sudo -u i2psvc i2prouter start
-	sleep 2
-	xdg-open 'http://127.0.0.1:7657/home'
-}
-
-function stopi2p {
-	echo -e -n " $GREEN*$BLUE stopping I2P services\n$RESETCOLOR"
-	sudo -u i2psvc i2prouter stop
-	
-	# restore DNS settings
-	if [ "$resolvconf_support" = false ] 
-	then
-		if [ -e /etc/resolv.conf.bak ]; then
-			rm /etc/resolv.conf
-			cp /etc/resolv.conf.bak /etc/resolv.conf
-		fi
-	else
-		mv /etc/resolvconf/resolv.conf.d/head{.bak,}
-		resolvconf -u
-	fi
-}
-
 
 function ip {
 
@@ -286,12 +247,6 @@ case "$1" in
 	myip|ip)
 		ip
 	;;
-	starti2p)
-		starti2p
-	;;
-	stopi2p)
-		stopi2p
-	;;
 	restart)
 		$0 stop
 		sleep 1
@@ -312,9 +267,6 @@ Parrot AnonSurf Module
 	$RED change$BLUE -$GREEN Changes identity restarting TOR
 	$RED status$BLUE -$GREEN Check if AnonSurf is working properly
 	$RED myip$BLUE -$GREEN Show your current IP address
-	----[ I2P related features ]----
-	$RED starti2p$BLUE -$GREEN Start i2p services
-	$RED stopi2p$BLUE -$GREEN Stop i2p services
 	
 $RESETCOLOR" >&2
 exit 1
