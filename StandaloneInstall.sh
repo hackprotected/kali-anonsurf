@@ -15,6 +15,9 @@ while true; do
     esac
 done
 
+git clone https://github.com/hackprotected/kali-anonsurf/ ~/./Kali-Anonsurf
+cd ~/Kali-Anonsurf/
+
 if [[ -n $(cat /etc/os-release |grep kali) ]]
 then
 	apt install libservlet3.0-java 
