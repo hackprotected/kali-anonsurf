@@ -10,14 +10,14 @@ if [[ -n $(cat /etc/os-release |grep kali) ]]
 then
 	apt install libservlet3.0-java 
 	wget http://ftp.us.debian.org/debian/pool/main/j/jetty8/libjetty8-java_8.1.16-4_all.deb
-	apt install libjetty8-java_8.1.16-4_all.deb
+	dpkg -i libjetty8-java_8.1.16-4_all.deb
 	apt install libecj-java libgetopt-java libservlet3.0-java glassfish-javaee ttf-dejavu libjbigi-jni
 	apt -f install
 fi
 
 apt install -y secure-delete tor
 
-apt install kali-anonsurf-deb-src/ kali-anonsurf.deb
-apt install kali-anonsurf.deb || (apt -f install && dpkg -i kali-anonsurf.deb)
+dpkg-deb -b kali-anonsurf-deb-src/ kali-anonsurf.deb
+dpkg -i kali-anonsurf.deb || (apt -f install && dpkg -i kali-anonsurf.deb)
 
 exit
