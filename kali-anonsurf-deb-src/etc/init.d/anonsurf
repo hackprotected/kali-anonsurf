@@ -125,12 +125,12 @@ function start {
 	then
 		cp /etc/resolv.conf /etc/resolv.conf.bak
 		touch /etc/resolv.conf
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' > /etc/resolv.conf
-		echo -e " $GREEN*$BLUE Modified resolv.conf to use Tor and Private Internet Access DNS"
+		echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' > /etc/resolv.conf
+		echo -e " $GREEN*$BLUE Modified resolv.conf to use Tor and OpenDNS DNS"
 	else
 		cp /etc/resolvconf/resolv.conf.d/head{,.bak}
-                echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' >> /etc/resolvconf/resolv.conf.d/head
-                echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and Private Internet Access DNS$RESETCOLOR\n"
+                echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' >> /etc/resolvconf/resolv.conf.d/head
+                echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and OpenDNS $RESETCOLOR\n"
                 resolvconf -u
 	fi
 
