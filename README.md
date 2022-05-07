@@ -45,10 +45,18 @@ Usage:
 ```
 
 ## Installation
-This package comes with an installer that makes things extremely easy:
+This package comes with an installer & standalone installer that makes things easy:
 
 ```bash
-./installer.sh
+sudo sh installer.sh
 ```
+or
+
+```bash
+sudo sh StandaloneInstall.sh
+```
+
+### What's the difference?
+The standalone installer does not require you to clone the whole repository, this will happen automatically. Reson for this is smaller size for portability.
 
 Once the installer is complete, you will be able to use both the anonsurf and pandora modules.
