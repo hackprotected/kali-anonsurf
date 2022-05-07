@@ -56,7 +56,7 @@ or
 sudo sh StandaloneInstall.sh
 ```
 
+Once the installer is complete, you will be able to use both the anonsurf and pandora modules.
+
 ### What's the difference?
 The standalone installer does not require you to clone the whole repository, this will happen automatically. Reson for this is smaller size for portability.
-
-Once the installer is complete, you will be able to use both the anonsurf and pandora modules.
