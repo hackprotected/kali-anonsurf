@@ -15,7 +15,7 @@ while true; do
     esac
 done
 
-# i2p Stuff :(
+# i2p Stuff :( // feels like bloat to me, as I have no use for it, but program breaks w/o it sooo
 
 rm -r /etc/apt/sources.list.d/i2p.list
 rm -r /usr/share/keyrings/i2p-archive-keyring.gpg
