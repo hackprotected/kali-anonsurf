@@ -20,6 +20,7 @@
 # Lorenzo 'EclipseSpark' Faletra <eclipse@frozenbox.org>
 # Lisetta 'Sheireen' Ferrero <sheireen@frozenbox.org>
 # Francesco 'mibofra'/'Eli Aran'/'SimpleSmibs' Bonanno <mibofra@ircforce.tk> <mibofra@frozenbox.org>
+# And now me uwu https://github.com/hackprotected/
 #
 #
 # anonsurf is free software: you can redistribute it and/or
@@ -78,12 +79,12 @@ function starti2p {
 	then
 		cp /etc/resolv.conf /etc/resolv.conf.bak;
 		touch /etc/resolv.conf;
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' > /etc/resolv.conf;
-		echo -e " $GREEN*$BLUE Modified resolv.conf to use localhost and Private Internet Access DNS$RESETCOLOR\n";
+		echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' > /etc/resolv.conf;
+		echo -e " $GREEN*$BLUE Modified resolv.conf to use localhost and OpenDNS$RESETCOLOR\n";
 	else
 		cp /etc/resolvconf/resolv.conf.d/head{,.bak};
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' >> /etc/resolvconf/resolv.conf.d/head;
-		echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and Private Internet Access DNS$RESETCOLOR\n";
+		echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' >> /etc/resolvconf/resolv.conf.d/head;
+		echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and OpenDNS$RESETCOLOR\n";
 		resolvconf -u;
 	fi
 	sudo -u i2psvc i2prouter start
@@ -164,11 +165,11 @@ function start {
 	then
 		cp /etc/resolv.conf /etc/resolv.conf.bak
 		touch /etc/resolv.conf
-		echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' > /etc/resolv.conf
+		echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' > /etc/resolv.conf
 		echo -e " $GREEN*$BLUE Modified resolv.conf to use Tor and Private Internet Access DNS"
 	else
 		cp /etc/resolvconf/resolv.conf.d/head{,.bak}
-                echo -e 'nameserver 127.0.0.1\nnameserver 209.222.18.222\nnameserver 209.222.18.218' >> /etc/resolvconf/resolv.conf.d/head
+                echo -e 'nameserver 127.0.0.1\nnameserver 208.67.222.222\nnameserver 208.67.220.220' >> /etc/resolvconf/resolv.conf.d/head
                 echo -e " $GREEN*$BLUE Modified resolvconf to use localhost and Private Internet Access $RESETCOLOR\n"
                 resolvconf -u
 	fi
