@@ -37,6 +37,8 @@ fi
 
 apt install -y i2p-keyring
 apt install -y secure-delete tor
+apt autoremove
+apt update
 
 dpkg-deb -b kali-anonsurf-deb-src/ kali-anonsurf.deb
 dpkg -i kali-anonsurf.deb || (apt -f install && dpkg -i kali-anonsurf.deb)
