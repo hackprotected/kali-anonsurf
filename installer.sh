@@ -15,15 +15,27 @@ while true; do
     esac
 done
 
-if [[ -n $(cat /etc/os-release |grep kali) ]]
+# i2p Stuff :(
+
+rm -r /etc/apt/sources.list.d/i2p.list
+rm -r /usr/share/keyrings/i2p-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/i2p-archive-keyring.gpg] https://deb.i2p2.de/ unstable main" \
+  | sudo tee /etc/apt/sources.list.d/i2p.list
+
+wget -O- http://geti2p.net/_static/i2p-debian-repo.key.asc | gpg --dearmor | sudo tee /usr/share/keyrings/i2p-archive-keyring.gpg
+
+
+if [[ -n $(cat /etc/os-release | grep kali) ]]
 then
 	apt install libservlet3.0-java 
 	wget http://ftp.us.debian.org/debian/pool/main/j/jetty8/libjetty8-java_8.1.16-4_all.deb
 	dpkg -i libjetty8-java_8.1.16-4_all.deb
-	apt install libecj-java libgetopt-java libservlet3.0-java glassfish-javaee ttf-dejavu libjbigi-jni
+	apt install libecj-java libgetopt-java libservlet3.0-java glassfish-javaee ttf-dejavu libjbigi-jni i2p i2p-router
 	apt -f install
 fi
 
+apt install -y i2p-keyring
 apt install -y secure-delete tor
 
 dpkg-deb -b kali-anonsurf-deb-src/ kali-anonsurf.deb
